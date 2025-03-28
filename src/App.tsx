@@ -39,10 +39,9 @@ export default function App() {
       }
 
       if (currentLevel < levels.length - 1) {
-        const nextLevelXPRequirement = levelXPRequirements[currentLevel + 1];
-        if (currentXP + level.xp >= nextLevelXPRequirement) {
-          setCurrentLevel((prevLevel) => prevLevel + 1);
-        }
+        setCurrentLevel((prevLevel) => prevLevel + 1);
+        setUserInput("");
+        setFeedback({ message: "", type: "success" });
       } else {
         setIsGameCompleted(true);
       }
@@ -61,12 +60,35 @@ export default function App() {
     setUserInput(newClassName);
   };
 
-  const currentLevelXPRequirement = levelXPRequirements[currentLevel];
-  const nextLevelXPRequirement = levelXPRequirements[currentLevel + 1];
-  const progress =
-    ((currentXP - currentLevelXPRequirement) /
-      (nextLevelXPRequirement - currentLevelXPRequirement)) *
-    100;
+  const calculateCurrentLevelIndex = () => {
+    for (let i = levelXPRequirements.length - 1; i >= 0; i--) {
+      if (currentXP >= levelXPRequirements[i]) {
+        return Math.min(i, levels.length - 1);
+      }
+    }
+    return 0;
+  };
+
+  const currentLevelIndex = calculateCurrentLevelIndex();
+  const nextLevelXPRequirement =
+    levelXPRequirements[currentLevelIndex + 1] ||
+    levelXPRequirements[levelXPRequirements.length - 1];
+
+  const progress = nextLevelXPRequirement
+    ? Math.min(
+        ((currentXP - levelXPRequirements[currentLevelIndex]) /
+          (nextLevelXPRequirement - levelXPRequirements[currentLevelIndex])) *
+          100,
+        100
+      )
+    : 100;
+
+  const displayCurrentLevel = isGameCompleted
+    ? levels.length - 1
+    : currentLevelIndex;
+  const displayNextLevel = isGameCompleted
+    ? levels.length
+    : Math.min(currentLevelIndex + 1, levels.length);
 
   return (
     <div className="container mx-auto p-4">
@@ -81,7 +103,7 @@ export default function App() {
 
       <div className="mb-8">
         <div className="flex items-center">
-          <span className="text-gray-700 mr-2">{currentLevel}</span>
+          <span className="text-gray-700 mr-2">{displayCurrentLevel}</span>
           <div className="flex-1">
             <ProgressBar
               completed={progress}
@@ -91,7 +113,7 @@ export default function App() {
               isLabelVisible={false}
             />
           </div>
-          <span className="text-gray-700 ml-2">{currentLevel + 1}</span>
+          <span className="text-gray-700 ml-2">{displayNextLevel}</span>
         </div>
         <div className="text-center mt-2 text-gray-700">
           XP: {currentXP} / {nextLevelXPRequirement}
