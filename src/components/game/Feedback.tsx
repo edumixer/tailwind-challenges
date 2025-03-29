@@ -1,4 +1,4 @@
-interface FeedbackProps {
+export interface FeedbackProps {
   message: string;
   type: "success" | "error";
 }
