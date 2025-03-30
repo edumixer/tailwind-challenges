@@ -125,10 +125,7 @@ export default function Sidebar({ levels }: { levels: Level[] }) {
                 {Object.keys(categoryCounts).map((category) => (
                   <li key={category}>
                     <Link
-                      to={`/fac
-                        
-                        
-                        il/${category}`}
+                      to={`/facil/${category}`}
                       className={`flex ${
                         isCollapsed ? "justify-center" : "justify-between"
                       } items-center px-4 py-2 rounded-lg bg-white hover:bg-indigo-100 transition-all`}
