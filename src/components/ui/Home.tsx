@@ -65,7 +65,6 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Dica rápida */}
         <p className="mt-12 text-gray-500 flex items-center justify-center gap-2">
           <Sparkles size={16} className="text-yellow-400" />
           Dica: Use o menu lateral para navegar entre os desafios
