@@ -11,7 +11,7 @@ export default function App() {
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar levels={levels} />
 
-      <div className="flex-1 p-4">
+      <div className="flex-1">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
