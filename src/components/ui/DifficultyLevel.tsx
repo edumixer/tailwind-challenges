@@ -13,10 +13,10 @@ export default function DifficultyLevel({ levels }: { levels: Level[] }) {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl font-bold text-blue-600 mb-6 capitalize">
+      <h1 className="text-3xl font-bold text-blue-600 mb-6 capitalize mt-10 p-8">
         {difficulty}
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
         {categories.map((category) => (
           <div
             key={category}
