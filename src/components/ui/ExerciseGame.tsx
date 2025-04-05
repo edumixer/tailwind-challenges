@@ -107,7 +107,7 @@ export default function ExerciseGame({ levels }: { levels: Level[] }) {
   return (
     <div className="container mx-auto">
       <header className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-blue-600 mb-2">
+        <h1 className="text-4xl font-bold text-blue-600 mb-2 p-4">
           Aprenda Tailwind CSS
         </h1>
         <p className="text-gray-600">
@@ -115,7 +115,7 @@ export default function ExerciseGame({ levels }: { levels: Level[] }) {
         </p>
       </header>
 
-      <div className="mb-8">
+      <div className="mb-8 p-6">
         <div className="flex items-center">
           <span className="text-gray-700 mr-2">{displayCurrentLevel}</span>
           <div className="flex-1">
