@@ -18,7 +18,7 @@ export default function LevelSelector({
   completedLevels,
 }: LevelSelectorProps) {
   return (
-    <div className="mb-6">
+    <div className="mb-6 p-8">
       <h2 className="text-xl font-semibold mb-2">Selecione o Nível</h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
         {levels.map((level, index) => (
